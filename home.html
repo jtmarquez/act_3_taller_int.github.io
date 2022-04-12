@@ -1,0 +1,17 @@
+<script src="https://integracion-actividad-3.herokuapp.com/trucks/socket.io.js"></script>
+<html>
+    <body>
+        <h3>Camiones:</h3>
+        <ul id ="base_node">
+        </ul>   
+    </body>
+</html>
+<script>
+    var socket = io("https://integracion-actividad-3.herokuapp.com", { path: "/trucks" });
+    socket.on('POSITION', function(msg){
+        base_node = document.getElementById("base_node");
+        new_li = document.createElement("li");
+        new_li.appendChild(document.createTextNode('CAMION ' + msg.code + ' posicion: ' + msg.position[0] + ',' + msg.position[1]));
+        base_node.appendChild(new_li);
+    });
+</script>
